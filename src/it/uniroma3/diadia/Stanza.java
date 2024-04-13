@@ -42,7 +42,10 @@ public class Stanza {
 	 * @param direzione direzione in cui sara' posta la stanza adiacente.
 	 * @param stanza    stanza adiacente nella direzione indicata dal primo
 	 *                  parametro.
-	 */
+	 *                  
+	 * TODO check stanza != null
+	 * TODO check stanza != this.stanza
+	 */ 
 	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
 		boolean aggiornato = false;
 		for (int i = 0; i < this.direzioni.length; i++)
@@ -144,7 +147,7 @@ public class Stanza {
 		boolean trovato;
 		trovato = false;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
+			if ( attrezzo != null && attrezzo.getNome().equals(nomeAttrezzo)) // attrezzo != null &&
 				trovato = true;
 		}
 		return trovato;
@@ -160,7 +163,7 @@ public class Stanza {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
+			if (attrezzo != null && attrezzo.getNome().equals(nomeAttrezzo))
 				attrezzoCercato = attrezzo;
 		}
 		return attrezzoCercato;
@@ -182,6 +185,14 @@ public class Stanza {
 		for (int i = 0; i < this.numeroStanzeAdiacenti; i++)
 			direzioni[i] = this.direzioni[i];
 		return direzioni;
+	}
+
+	public int getMaxAttrezzi() {
+		return NUMERO_MASSIMO_ATTREZZI;
+	}
+
+	public int getMaxDirezioni() {
+		return NUMERO_MASSIMO_DIREZIONI;
 	}
 
 }
