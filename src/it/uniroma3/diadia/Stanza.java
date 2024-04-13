@@ -194,5 +194,9 @@ public class Stanza {
 	public int getMaxDirezioni() {
 		return NUMERO_MASSIMO_DIREZIONI;
 	}
+	
+	public int getNumStanzeAdiacenti() {
+		return this.numeroStanzeAdiacenti;
+	}
 
 }

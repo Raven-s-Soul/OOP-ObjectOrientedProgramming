@@ -17,31 +17,31 @@ class PartitaTest {
 	@Test // Eliminabile
 	void testGetSetCFU() {
 		partita.setCfu(30);
-		assertEquals(partita.getCfu(),30);
+		assertEquals(30, partita.getCfu());
 	}
 	
 	@Test
 	void testSetFinita() {
 		partita.setFinita();
-		assertEquals(partita.isFinita(),true);
+		assertEquals(true, partita.isFinita());
 	}
 	
 	@Test
 	void testCFUZero() {
 		partita.setCfu(0);
-		assertEquals(partita.isFinita(),true);
+		assertEquals(true, partita.isFinita());
 	}
 	
 	@Test
 	void testSetVincente() {
 		partita.setStanzaCorrente(partita.getStanzaVincente());
-		assertEquals(partita.vinta() , true);
+		assertEquals(true, partita.vinta());
 	}
 	
 	@Test
 	void testSetNullCorrente() {
 		partita.setStanzaCorrente(null);
-		assertEquals(partita.vinta() , false);
+		assertEquals(false, partita.vinta());
 	}
 	
 	@Test //controllo vittoria allo start.

@@ -22,14 +22,14 @@ class StanzaTest {
 	@Test
 	void testImpostaStanzaAdiacenteNull() {
 		stanza.impostaStanzaAdiacente("nord", null);
-		assertEquals(stanza.getStanzaAdiacente("nord") , null);
+		assertEquals(null, stanza.getStanzaAdiacente("nord"));
 	}
 	
 	@Test
 	void testImpostaStanzaAdiacente() {
 		Stanza test = new Stanza("Test") ;
 		stanza.impostaStanzaAdiacente("nord", test);
-		assertEquals(stanza.getStanzaAdiacente("nord") , test);
+		assertEquals(test, stanza.getStanzaAdiacente("nord"));
 	}
 	
 	@Test // Override su stanza nella stessa direzione
@@ -38,7 +38,7 @@ class StanzaTest {
 		Stanza test2 = new Stanza("Test2") ;
 		stanza.impostaStanzaAdiacente("nord", test);
 		stanza.impostaStanzaAdiacente("nord", test2);
-		assertEquals(stanza.getStanzaAdiacente("nord") , test2);
+		assertEquals(test2, stanza.getStanzaAdiacente("nord"));
 	}
 	
 	@Test
@@ -64,25 +64,25 @@ class StanzaTest {
 		for(int i = 0; i < stanza.getMaxAttrezzi(); i++ ) {
 			stanza.addAttrezzo(null);
 		}
-		assertEquals(stanza.addAttrezzo(null) , false);
+		assertEquals(false, stanza.addAttrezzo(null));
 	}
 	
 	@Test
 	void testHasAttrezzo() {
 		Attrezzo AttrezzoTest = new Attrezzo("test", 1);
 		stanza.addAttrezzo(AttrezzoTest);
-		assertEquals(stanza.hasAttrezzo("test") , true);
+		assertEquals(true, stanza.hasAttrezzo("test"));
 	}
 	
 	@Test
 	void testHasAttrezzoVuoto() {
 		stanza.addAttrezzo(null); // Come non inserire nulla
-		assertEquals(stanza.hasAttrezzo(null) , false);
+		assertEquals(false, stanza.hasAttrezzo(null));
 	}
 	
 	@Test
 	void testHasAttrezzoNonPresente() {
-		assertEquals(stanza.hasAttrezzo("Elemento") , false);
+		assertEquals(false, stanza.hasAttrezzo("Elemento"));
 	}
 	
 	
@@ -93,19 +93,19 @@ class StanzaTest {
 			AttrezzoTest = new Attrezzo( Integer.toString(i) , i ); // ""+i
 			stanza.addAttrezzo(AttrezzoTest);
 		}
-		assertEquals(stanza.hasAttrezzo("Elemento") , false);
+		assertEquals(false, stanza.hasAttrezzo("Elemento"));
 	}
 	
 	@Test
 	void testGetAttrezzo() {
 		Attrezzo AttrezzoTest = new Attrezzo("test", 1);
 		stanza.addAttrezzo(AttrezzoTest);
-		assertEquals(stanza.getAttrezzo("test") , AttrezzoTest);
+		assertEquals(AttrezzoTest, stanza.getAttrezzo("test"));
 	}
 	
 	@Test
 	void testGetAttrezzoNull() {
-		assertEquals(stanza.getAttrezzo(null) , null);
+		assertEquals(null, stanza.getAttrezzo(null));
 	}
 	
 	@Test
@@ -118,16 +118,36 @@ class StanzaTest {
 		// Array Pieno, inserimenti successivi bloccati.
 		AttrezzoTest = new Attrezzo( "Elemento" , 0 );
 		stanza.addAttrezzo(AttrezzoTest);
-		assertEquals(stanza.getAttrezzo("Elemento") , null);
+		assertEquals(null, stanza.getAttrezzo("Elemento"));
 	}
 	
 	
 	// TODO finire
 	@Test
 	void testGetDirezioni() {
-		
 		//assertSame(stanza.getDirezioni().toString() , new String[1] );
+		
+		/*String[] s= new String[stanza.getNumStanzeAdiacenti()];*/
+		assertEquals(stanza.getDirezioni().length, 0);
 	}
+	
+	@Test
+	void testGetDir2() {
+		Stanza arrivo= new Stanza("arrivo");
+		stanza.impostaStanzaAdiacente("nord", arrivo);
+		
+		assertEquals(stanza.getDirezioni()[0], "nord");
+	}
+	
+	@Test
+	void testGetDir3() {
+		Stanza arrivo= new Stanza("arrivo");
+		stanza.impostaStanzaAdiacente("nord", arrivo);
+		
+		assertTrue(stanza.getDirezioni().length==1);
+	}	
+	
+
 	
 	
 	// removeAttrezzo
