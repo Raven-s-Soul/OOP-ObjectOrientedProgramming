@@ -93,8 +93,8 @@ public class DiaDia {
 			System.out.println("Direzione inesistente");
 		else {
 			this.partita.getLabirinto().setStanzaAttuale(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			int cfu = this.partita.getGiocatore().getCfu();
+			this.partita.getGiocatore().setCfu(cfu--);
 		}
 		System.out.println(partita.getLabirinto().getStanzaAttuale().getDescrizione());
 	}
@@ -112,7 +112,7 @@ public class DiaDia {
 		this.partita.getLabirinto().getStanzaAttuale().removeAttrezzo(attrezzo);
 	}
 	
-	private void posa(String nomeAttrezzo) {
+	private void posa (String nomeAttrezzo) {
 		
 		
 	}

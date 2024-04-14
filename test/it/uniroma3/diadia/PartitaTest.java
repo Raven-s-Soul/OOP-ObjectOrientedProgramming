@@ -21,26 +21,20 @@ class PartitaTest {
 	}
 	
 	@Test
+	void testCFUZero() {
+		partita.getGiocatore().setCfu(0);
+		assertEquals(true, partita.isFinita());
+	}
+	
+	@Test
 	void testSetNullCorrente() {
 		partita.getLabirinto().setStanzaAttuale(null);
 		assertEquals(false, partita.vinta());
 	}
 	
-	@Test // Eliminabile
-	void testGetSetCFU() {
-		partita.setCfu(30);
-		assertEquals(30, partita.getCfu());
-	}
-	
 	@Test
 	void testSetFinita() {
 		partita.setFinita();
-		assertEquals(true, partita.isFinita());
-	}
-	
-	@Test
-	void testCFUZero() {
-		partita.setCfu(0);
 		assertEquals(true, partita.isFinita());
 	}
 	

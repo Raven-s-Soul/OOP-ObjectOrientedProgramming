@@ -10,15 +10,11 @@ package it.uniroma3.diadia;
 
 public class Partita {
 
-	static final private int CFU_INIZIALI = 20;
 
 	private Labirinto Labirinto;
-	
 	private Giocatore giocatore;
-	private Stanza stanzaCorrente;
-	private Stanza stanzaVincente;
+	
 	private boolean finita;
-	private int cfu;
 
 	public Partita() {
 		this.Labirinto = new Labirinto();
@@ -42,7 +38,7 @@ public class Partita {
 	 * @return vero se partita finita
 	 */
 	public boolean isFinita() {
-		return finita || vinta() || (cfu == 0);
+		return finita || vinta() || (getGiocatore().getCfu() == 0);
 	}
 
 	//Imposta la partita come finita
@@ -52,10 +48,6 @@ public class Partita {
 
 	public Giocatore getGiocatore() {
 		return giocatore;
-	}
-
-	public void setCfu(int cfu) {
-		this.cfu = cfu;
 	}
 
 	public Labirinto getLabirinto() {
