@@ -88,15 +88,15 @@ public class DiaDia {
 		if (direzione == null)
 			System.out.println("Dove vuoi andare ?");
 		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
+		prossimaStanza = this.partita.getLabirinto().getStanzaAttuale().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
 			System.out.println("Direzione inesistente");
 		else {
-			this.partita.setStanzaCorrente(prossimaStanza);
+			this.partita.getLabirinto().setStanzaAttuale(prossimaStanza);
 			int cfu = this.partita.getCfu();
 			this.partita.setCfu(cfu--);
 		}
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		System.out.println(partita.getLabirinto().getStanzaAttuale().getDescrizione());
 	}
 
 	/**
