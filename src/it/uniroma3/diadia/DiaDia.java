@@ -1,7 +1,5 @@
 package it.uniroma3.diadia;
 
-
-
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -12,10 +10,10 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
  * Questa e' la classe principale crea e istanzia tutte le altre
  *
  * @author docente di POO (da un'idea di Michael Kolling and David J. Barnes)
- * 
- * @version base
+ * @see Partita
+ * @see IOConsole
+ * @version 1.0
  */
-
 public class DiaDia {
 
 	static final private String MESSAGGIO_BENVENUTO = ""
@@ -31,11 +29,18 @@ public class DiaDia {
 
 	private Partita partita;
 	private IOConsole io;
-
+	
+	/**
+	* Crea DiaDia, e definisce partita.
+	*/
 	public DiaDia() {
 		this.partita = new Partita();
 	}
-
+	
+	/**
+	* Iteratore di DiaDia, legge input dal giocatore
+	* e li manda a analizzare.
+	*/
 	public void gioca() {
 		String istruzione;
 
@@ -119,6 +124,11 @@ public class DiaDia {
 		io.mostraMessaggio("Grazie di aver giocato!"); // si desidera smettere
 	}
 	
+	/**
+	* Prende un attrezzo dal ambiente e lo inserisce nella borsa del giocatore.
+	*
+	* @param nomeAttrezzo è la stringa utile a cercare l'attrezzo
+	*/
 	private void prendi(String nomeAttrezzo) {
 		if(this.partita.getLabirinto().getStanzaAttuale().getNumAttrezzi() ==0) {
 			io.mostraMessaggio("Non sono presenti attrezzi nella stanza");
@@ -145,6 +155,11 @@ public class DiaDia {
 	
 	}
 	
+	/**
+	* Posa un attrezzo dalla borsa del giocatore e lo inserisce nel ambiente.
+	*
+	* @param nomeAttrezzo è la stringa utile a cercare l'attrezzo
+	*/
 	private void posa (String nomeAttrezzo) {
 		if(this.partita.getGiocatore().getBorsa().getNumAttrezzi()==0) {
 			io.mostraMessaggio("Non sono presenti oggetti nella borsa");

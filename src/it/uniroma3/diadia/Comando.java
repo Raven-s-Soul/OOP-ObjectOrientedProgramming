@@ -9,14 +9,17 @@ import java.util.Scanner;
  * "vai" e parametro "nord").
  *
  * @author docente di POO
- * @version base
+ * @version 1.0
  */
-
 public class Comando {
 
 	private String nome;
 	private String parametro;
-
+	
+	/**
+	* Crea un comando
+	* @param istruzione è la stringa che contiene nome e parametro.
+	*/
 	public Comando(String istruzione) {
 		Scanner scannerDiParole = new Scanner(istruzione);
 
@@ -38,8 +41,10 @@ public class Comando {
 	public String getParametro() {
 		return this.parametro;
 	}
-
+	
+	/*
 	public boolean sconosciuto() {
 		return (this.nome == null);
 	}
+	*/
 }
