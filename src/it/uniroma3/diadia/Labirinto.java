@@ -56,8 +56,17 @@ public class Labirinto {
 	}
 
 	public void setStanzaAttuale(Stanza stanzaAttuale) {
-		if(stanzaAttuale != null)
-			StanzaAttuale = stanzaAttuale;
+		if(stanzaAttuale==null)
+			return;
+		
+		if(!StanzaInLabirinto(stanzaAttuale)) 
+			addStanza(stanzaAttuale);
+
+		StanzaAttuale = stanzaAttuale;
+	}
+	
+	public void unsafeSetStanzaAttuale(Stanza stanzaAttuale) {	
+		StanzaAttuale = stanzaAttuale;
 	}
 
 	public Stanza[] getStanze() {
