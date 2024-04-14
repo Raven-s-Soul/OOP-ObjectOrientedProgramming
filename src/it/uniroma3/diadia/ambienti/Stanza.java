@@ -43,9 +43,6 @@ public class Stanza {
 	 * @param direzione direzione in cui sara' posta la stanza adiacente.
 	 * @param stanza    stanza adiacente nella direzione indicata dal primo
 	 *                  parametro.
-	 *                  
-	 * TODO check stanza != null
-	 * TODO check stanza != this.stanza
 	 */ 
 	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
 		boolean aggiornato = false;
@@ -66,6 +63,7 @@ public class Stanza {
 	 * Restituisce la stanza adiacente nella direzione specificata
 	 * 
 	 * @param direzione
+	 * @return oggetto Stanza, rappresenta la stanza adiacente 
 	 */
 	public Stanza getStanzaAdiacente(String direzione) {
 		Stanza stanza = null;

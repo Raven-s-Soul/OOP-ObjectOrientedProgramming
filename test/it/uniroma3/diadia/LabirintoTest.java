@@ -77,7 +77,7 @@ public class LabirintoTest {
 		Stanza stanzaTest;
 		int value=10;
 		for(int i = 0; i < value; i++ ) {
-			stanzaTest = new Stanza( Integer.toString(i)); // ""+i
+			stanzaTest = new Stanza( Integer.toString(i)); 
 			Labirinto.addStanza(stanzaTest);
 		}
 		assertEquals(Labirinto.getStanze().length, value);

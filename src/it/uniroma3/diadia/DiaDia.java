@@ -55,6 +55,7 @@ public class DiaDia {
 	/**
 	 * Processa una istruzione
 	 *
+	 * @param istruzione ovvero una stringa contenente il comando da eseguire
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false
 	 *         altrimenti
 	 */

@@ -94,7 +94,7 @@ class StanzaTest {
 	void testHasAttrezzoPieno() {
 		Attrezzo AttrezzoTest2;
 		for(int i = 0; i < stanza.getMaxAttrezzi(); i++ ) {
-			AttrezzoTest2 = new Attrezzo( Integer.toString(i) , i ); // ""+i
+			AttrezzoTest2 = new Attrezzo( Integer.toString(i) , i ); 
 			stanza.addAttrezzo(AttrezzoTest2);
 		}
 		assertEquals(false, stanza.hasAttrezzo("Elemento"));
