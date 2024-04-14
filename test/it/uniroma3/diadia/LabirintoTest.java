@@ -21,7 +21,8 @@ public class LabirintoTest {
 	@BeforeEach
     void setUp(){
 		Labirinto = new Labirinto();
-    }
+		test= new Stanza("test");
+	}
 	
 	@Test
 	void testSetStanzaNull() {
@@ -31,9 +32,8 @@ public class LabirintoTest {
 	
 	@Test
 	void testStanzaNullStanzaVincente() {
-		Stanza stanza = new Stanza("test");
 		Labirinto.setStanzaAttuale(null);
-		Labirinto.setStanzaFinale(stanza);
+		Labirinto.setStanzaFinale(test);
 		assertNotEquals(Labirinto.getStanzaAttuale() , Labirinto.getStanzaFinale());
 	}
 	
@@ -45,34 +45,29 @@ public class LabirintoTest {
 	
 	@Test
 	void testStanzaLabirintoUnaStanza() {
-		test= new Stanza("test1");
 		Labirinto.addStanza(test);
 		assertTrue(Labirinto.StanzaInLabirinto(test));
 	}
 	
 	@Test
 	void testStanzaLabirintoStanzaNonPresente() {
-		test= new Stanza("test1");
 		assertFalse(Labirinto.StanzaInLabirinto(test));		
 	}
 	
 	@Test 
 	void testSetStanzaIniziale() {
-		test= new Stanza("test1");
 		Labirinto.setStanzaIniziale(test);
 		assertTrue(Labirinto.StanzaInLabirinto(test));
 	}
 	
 	@Test 
 	void testSetStanzaFinale() {
-		test= new Stanza("test1");
 		Labirinto.setStanzaFinale(test);
 		assertTrue(Labirinto.StanzaInLabirinto(test));
 	}	
 	
 	@Test 
 	void testSetStanzaAttuale() {
-		test= new Stanza("test1");
 		Labirinto.setStanzaAttuale(test);
 		assertTrue(Labirinto.StanzaInLabirinto(test));
 	}	
