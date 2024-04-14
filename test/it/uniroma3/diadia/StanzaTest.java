@@ -147,9 +147,25 @@ class StanzaTest {
 		assertTrue(stanza.getDirezioni().length==1);
 	}	
 	
-
 	
+	@Test
+	void testRemoveUnSoloAttrezzo() {
+		Attrezzo ATest= new Attrezzo("test", 1);
+		stanza.addAttrezzo(ATest);
+		
+		assertEquals(true, stanza.removeAttrezzo(ATest));
+	}
 	
-	// removeAttrezzo
+	@Test
+	void testRemoveNessunAttrezzo() {
+		assertEquals(false, stanza.removeAttrezzo(null));
+	}
+	
+	@Test
+	void testRemoveAttrezzoNonPresente() {
+		Attrezzo ATest=new Attrezzo("test", 1);
+		assertEquals(false, stanza.removeAttrezzo(ATest));
+	}
+	
 
 }

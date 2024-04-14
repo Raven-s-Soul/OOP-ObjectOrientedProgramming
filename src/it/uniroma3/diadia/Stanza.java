@@ -176,7 +176,13 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		// TODO da implementare
+		
+		for(Attrezzo a: this.attrezzi){
+			if(a!=null && a==attrezzo) {
+				a=null;
+				return true;
+			}
+		}
 		return false;
 	}
 

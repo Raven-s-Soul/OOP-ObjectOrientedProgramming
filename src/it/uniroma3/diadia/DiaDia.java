@@ -105,6 +105,17 @@ public class DiaDia {
 	private void fine() {
 		System.out.println("Grazie di aver giocato!"); // si desidera smettere
 	}
+	
+	private void prendi(String nomeAttrezzo) {
+		Attrezzo attrezzo= this.partita.getLabirinto().getStanzaAttuale().getAttrezzo("nomeAttrezzo");
+		this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
+		this.partita.getLabirinto().getStanzaAttuale().removeAttrezzo(attrezzo);
+	}
+	
+	private void posa(String nomeAttrezzo) {
+		
+		
+	}
 
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();

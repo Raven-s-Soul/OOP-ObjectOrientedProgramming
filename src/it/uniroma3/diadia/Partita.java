@@ -9,9 +9,8 @@ package it.uniroma3.diadia;
  */
 
 public class Partita {
-
-	static final private int CFU_INIZIALI = 20;
-
+	
+	private Giocatore giocatore;
 	private Stanza stanzaCorrente;
 	private Stanza stanzaVincente;
 	private boolean finita;
@@ -20,7 +19,7 @@ public class Partita {
 	public Partita() {
 		creaStanze();
 		this.finita = false;
-		this.cfu = CFU_INIZIALI;
+		this.giocatore= new Giocatore();
 	}
 
 	/**
@@ -100,11 +99,10 @@ public class Partita {
 		this.finita = true;
 	}
 
-	public int getCfu() {
-		return this.cfu;
+	public Giocatore getGiocatore() {
+		return giocatore;
 	}
 
-	public void setCfu(int cfu) {
-		this.cfu = cfu;
-	}
+	
+
 }
