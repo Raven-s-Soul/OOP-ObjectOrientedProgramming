@@ -36,10 +36,6 @@ public class Giocatore {
 	
 	
 	
-	/*ritorna l'attrezzo preso da borsa*/
-	public Attrezzo getAttrezzoDaBorsa(String nomeAttrezzo) {
-		return this.borsa.getAttrezzo(nomeAttrezzo);
-	}
 
 	
 	
