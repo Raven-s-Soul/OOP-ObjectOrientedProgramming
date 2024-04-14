@@ -24,7 +24,7 @@ public class DiaDia {
 			+ "o regalarli se pensi che possano ingraziarti qualcuno.\n\n"
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
 
-	static final private String[] elencoComandi = { "vai", "aiuto", "fine" };
+	static final private String[] elencoComandi = { "vai", "aiuto", "fine", "prendi", "posa" };
 
 	private Partita partita;
 
@@ -60,9 +60,14 @@ public class DiaDia {
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		else if(comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi(comandoDaEseguire.getParametro());
+		else if(comandoDaEseguire.getNome().equals("posa"))
+			this.posa(comandoDaEseguire.getParametro());
 		else
 			System.out.println("Comando sconosciuto");
-		if (this.partita.vinta()) {
+		
+		if (this.partita.isFinita()) {
 			System.out.println("Hai vinto!");
 			return true;
 		} else
@@ -85,18 +90,21 @@ public class DiaDia {
 	 * nome, altrimenti stampa un messaggio di errore
 	 */
 	private void vai(String direzione) {
-		if (direzione == null)
+		if (direzione == null) {
 			System.out.println("Dove vuoi andare ?");
-		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.getLabirinto().getStanzaAttuale().getStanzaAdiacente(direzione);
-		if (prossimaStanza == null)
-			System.out.println("Direzione inesistente");
-		else {
-			this.partita.getLabirinto().setStanzaAttuale(prossimaStanza);
-			int cfu = this.partita.getGiocatore().getCfu();
-			this.partita.getGiocatore().setCfu(cfu--);
 		}
-		System.out.println(partita.getLabirinto().getStanzaAttuale().getDescrizione());
+		else {
+			Stanza prossimaStanza = null;
+			prossimaStanza = this.partita.getLabirinto().getStanzaAttuale().getStanzaAdiacente(direzione);
+			if (prossimaStanza == null)
+				System.out.println("Direzione inesistente");
+			else {
+				this.partita.getLabirinto().setStanzaAttuale(prossimaStanza);
+				int cfu = this.partita.getGiocatore().getCfu();
+				this.partita.getGiocatore().setCfu(--cfu);
+			}
+		}
+		System.out.println(partita.getLabirinto().getStanzaAttuale().getDescrizione());	
 	}
 
 	/**
@@ -107,14 +115,51 @@ public class DiaDia {
 	}
 	
 	private void prendi(String nomeAttrezzo) {
-		Attrezzo attrezzo= this.partita.getLabirinto().getStanzaAttuale().getAttrezzo("nomeAttrezzo");
-		this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
-		this.partita.getLabirinto().getStanzaAttuale().removeAttrezzo(attrezzo);
+		if(this.partita.getLabirinto().getStanzaAttuale().getNumAttrezzi() ==0) {
+			System.out.println("Non sono presenti attrezzi nella stanza");
+			return;
+		}
+		
+		if(nomeAttrezzo==null){
+			System.out.println("cosa vuoi prendere?");
+		}
+		else {
+			Attrezzo attrezzoPreso= null;
+			attrezzoPreso=this.partita.getLabirinto().getStanzaAttuale().getAttrezzo(nomeAttrezzo);  //prende l'attrezzo dalla stanza
+			if(attrezzoPreso==null)
+				System.out.println("oggetto non presente nella stanza");
+
+			else {
+				this.partita.getGiocatore().addAttrezzoToBorsa(attrezzoPreso);	//aggiunge l'attrezzo alla borsa
+				this.partita.getLabirinto().getStanzaAttuale().removeAttrezzo(attrezzoPreso);	//rimuove da stanza
+				System.out.println("Oggetto preso");
+			}
+		}
+		
+		System.out.println(partita.getLabirinto().getStanzaAttuale().getDescrizioneAttrezzi());
+	
 	}
 	
 	private void posa (String nomeAttrezzo) {
+		if(this.partita.getGiocatore().getBorsa().getNumAttrezzi()==0) {
+			System.out.println("Non sono presenti oggetti nella borsa");
+			return;
+		}
 		
-		
+		if(nomeAttrezzo==null) {
+			System.out.println("Cosa vuoi posare?");
+		}
+		else {
+			Attrezzo attrezzoDaPosare= null;
+			attrezzoDaPosare= this.partita.getGiocatore().removeAttrezzoDaBorsa(nomeAttrezzo);		//rimuouve attrezzo
+			if(attrezzoDaPosare==null) {
+				System.out.println("Attrezzo non presente nella borsa");
+			}
+			else {
+				this.partita.getLabirinto().getStanzaAttuale().addAttrezzo(attrezzoDaPosare);	//aggiunge l'attrezzo alla stanza
+			}
+		}
+		System.out.println(partita.getGiocatore().getBorsa().toString());
 	}
 
 	public static void main(String[] argc) {

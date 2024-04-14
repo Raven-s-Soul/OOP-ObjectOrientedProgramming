@@ -22,7 +22,23 @@ public class Giocatore {
 	public Borsa getBorsa() {
 		return this.borsa;
 	}
+		
+	/*aggiunge l'attrezzo alla borsa*/
+	public void addAttrezzoToBorsa(Attrezzo aggiungere) {
+		this.borsa.addAttrezzo(aggiungere);
+	}
 	
+	public Attrezzo removeAttrezzoDaBorsa(String nomeAttrezzo) {
+		return this.getBorsa().removeAttrezzo(nomeAttrezzo);
+	}
+	
+	
+	
+	/*ritorna l'attrezzo preso da borsa*/
+	public Attrezzo getAttrezzoDaBorsa(String nomeAttrezzo) {
+		return this.borsa.getAttrezzo(nomeAttrezzo);
+	}
+
 	
 	
 }

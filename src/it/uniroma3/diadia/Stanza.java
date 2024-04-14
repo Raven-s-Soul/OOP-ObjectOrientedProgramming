@@ -91,6 +91,17 @@ public class Stanza {
 	public String getDescrizione() {
 		return this.toString();
 	}
+	
+	
+	public String getDescrizioneAttrezzi() {
+		StringBuilder risultato= new StringBuilder();
+		risultato.append("Attrezzi nella stanza: ");
+		for (Attrezzo attrezzo : this.attrezzi) {
+			if (attrezzo != null)
+				risultato.append(attrezzo.toString() + " ");
+		}
+		return risultato.toString();
+	}
 
 	/**
 	 * Restituisce la collezione di attrezzi presenti nella stanza.
@@ -109,12 +120,17 @@ public class Stanza {
 	 */
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
-			this.attrezzi[numeroAttrezzi] = attrezzo;
-			this.numeroAttrezzi++;
-			return true;
-		} else {
-			return false;
+			
+			for(int i=0; i<this.attrezzi.length; i++) {
+				if(attrezzi[i]==null) {
+					this.attrezzi[i] = attrezzo;
+					this.numeroAttrezzi++;
+					return true;
+				}
+			}
 		}
+		return false;
+
 	}
 
 	/**
@@ -176,12 +192,15 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		
+		int i=0;
 		for(Attrezzo a: this.attrezzi){
+			
 			if(a!=null && a==attrezzo) {
-				a=null;
+				attrezzi[i]=null;
+				this.numeroAttrezzi--;
 				return true;
 			}
+			i++;
 		}
 		return false;
 	}
@@ -203,6 +222,10 @@ public class Stanza {
 	
 	public int getNumStanzeAdiacenti() {
 		return this.numeroStanzeAdiacenti;
+	}
+	
+	public int getNumAttrezzi() {
+		return this.numeroAttrezzi;
 	}
 
 }
