@@ -1,3 +1,5 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+!/runConfigurations/DiaDia.xml
+!/runConfigurations/Tests.xml
