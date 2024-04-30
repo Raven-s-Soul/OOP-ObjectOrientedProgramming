@@ -9,7 +9,7 @@ import java.util.Scanner;
 * @author docente di POO
 * @version 1.0
 */
-public class IOConsole {
+public class IOConsole implements  IO{
 	
 	/**
 	* Scrive messaggi in output.
