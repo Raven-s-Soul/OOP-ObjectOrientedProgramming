@@ -14,8 +14,8 @@ public class IOSimulator implements IO{
     int indexGenOut;
 
 
-    public IOSimulator(String[] righeDaLeggere){
-        this.RigheIn = righeDaLeggere;
+    public IOSimulator(String[] Input){
+        this.RigheIn = Input;
         //this.RigheOut = new String[baseArrayLength];
         this.RigheGen = new String[baseArrayLength];
         this.indexRigheIn = 0;
@@ -41,9 +41,7 @@ public class IOSimulator implements IO{
 
     @Override
     public String leggiRiga() {
-        String riga = null;
-
-        riga = this.RigheIn[indexRigheIn];
+        String riga = this.RigheIn[indexRigheIn];
         this.indexRigheIn++;
         return riga;
     }
