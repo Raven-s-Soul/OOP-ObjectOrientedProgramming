@@ -17,18 +17,16 @@ public class Partita {
 
     private final Labirinto Labirinto;
     private final Giocatore giocatore;
-    private final IO io;
     private boolean finita;
 
     /**
      * Crea Partita, definisce finita, giocatore e Labirinto.
      */
-    public Partita(IO io) {
+    public Partita() {
         this.Labirinto = new Labirinto();
         this.getLabirinto().creaStanze();
         this.finita = false;
         this.giocatore = new Giocatore();
-        this.io = io;
     }
 
     /**
@@ -65,11 +63,5 @@ public class Partita {
     public Labirinto getLabirinto() {
         return Labirinto;
     }
-
-
-    public IO getIo() {
-        return io;
-    }
-
 
 }

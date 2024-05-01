@@ -1,5 +1,6 @@
 package it.uniroma3.diadia.comandi;
 
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 
 
@@ -20,5 +21,7 @@ public interface Comando {
     void setParametro(String parametro);
 
     void esegui(Partita partita);
+
+    void setIO(IO io);
 
 }

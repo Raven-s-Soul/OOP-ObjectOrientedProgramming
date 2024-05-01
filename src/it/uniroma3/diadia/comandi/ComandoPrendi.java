@@ -1,10 +1,12 @@
 package it.uniroma3.diadia.comandi;
 
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class ComandoPrendi implements Comando {
 
+    IO io;
     private String nomeAttrezzo;
 
     @Override
@@ -24,31 +26,35 @@ public class ComandoPrendi implements Comando {
 
     /**
      * Prende un attrezzo dal ambiente e lo inserisce nella borsa del giocatore.
-     *
      */
     @Override
     public void esegui(Partita partita) {
         if (partita.getLabirinto().getStanzaAttuale().getNumAttrezzi() == 0) {
-            partita.getIo().mostraMessaggio("Non sono presenti attrezzi nella stanza");
+            io.mostraMessaggio("Non sono presenti attrezzi nella stanza");
             return;
         }
 
         if (nomeAttrezzo == null) {
-            partita.getIo().mostraMessaggio("cosa vuoi prendere?");
+            io.mostraMessaggio("cosa vuoi prendere?");
         } else {
             Attrezzo attrezzoPreso = null;
             attrezzoPreso = partita.getLabirinto().getStanzaAttuale().getAttrezzo(nomeAttrezzo);  //prende l'attrezzo dalla stanza
             if (attrezzoPreso == null)
-                partita.getIo().mostraMessaggio("oggetto non presente nella stanza");
+                io.mostraMessaggio("oggetto non presente nella stanza");
 
             else {
                 partita.getGiocatore().addAttrezzoToBorsa(attrezzoPreso);    //aggiunge l'attrezzo alla borsa
                 partita.getLabirinto().getStanzaAttuale().removeAttrezzo(attrezzoPreso);    //rimuove da stanza
-                partita.getIo().mostraMessaggio("Oggetto preso");
+                io.mostraMessaggio("Oggetto preso");
             }
         }
 
-        partita.getIo().mostraMessaggio(partita.getLabirinto().getStanzaAttuale().getDescrizioneAttrezzi());
+        io.mostraMessaggio(partita.getLabirinto().getStanzaAttuale().getDescrizioneAttrezzi());
 
+    }
+
+    @Override
+    public void setIO(IO io) {
+        this.io = io;
     }
 }

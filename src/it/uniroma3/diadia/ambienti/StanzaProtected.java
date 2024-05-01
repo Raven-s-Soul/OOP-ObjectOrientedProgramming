@@ -15,12 +15,12 @@ public class StanzaProtected {
 
     static final protected int NUMERO_MASSIMO_DIREZIONI = 4;
     static final protected int NUMERO_MASSIMO_ATTREZZI = 10;
+    private final String nome;
     protected Attrezzo[] attrezzi;
     protected int numeroAttrezzi;
     protected Stanza[] stanzeAdiacenti;
     protected int numeroStanzeAdiacenti;
     protected String[] direzioni;
-    private final String nome;
 
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.

@@ -13,8 +13,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class Borsa {
     public final static int DEFAULT_PESO_MAX_BORSA = 10;
     private final Attrezzo[] attrezzi;
-    private int numeroAttrezzi;
     private final int pesoMax;
+    private int numeroAttrezzi;
 
     /**
      * Crea Borsa, definendo pesoMax, attrezzi e numeroAttrezzi.

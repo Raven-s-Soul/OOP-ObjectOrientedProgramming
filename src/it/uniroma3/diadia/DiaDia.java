@@ -33,7 +33,7 @@ public class DiaDia {
      */
     public DiaDia(IO io) {
         this.io = io;
-        this.partita = new Partita(io);
+        this.partita = new Partita();
     }
 
     public static void main(String[] argc) {
@@ -65,7 +65,7 @@ public class DiaDia {
     private boolean processaIstruzione(String istruzione) {
         Comando comandoDaEseguire;
         FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica();
-        comandoDaEseguire = factory.costruisciComando(istruzione);
+        comandoDaEseguire = factory.costruisciComando(istruzione, io);
         comandoDaEseguire.esegui(this.partita);
         if (this.partita.vinta()) {
             io.mostraMessaggio("Hai vinto!");

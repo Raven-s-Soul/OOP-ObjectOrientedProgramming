@@ -13,13 +13,14 @@ class ComandoPosaTest {
 
     Partita partita;
     ComandoPosa comando = new ComandoPosa();
-    IO io = new IOConsole();
     Attrezzo attrezzo = new Attrezzo("test", 1);
+    IO io;
 
     @BeforeEach
     void setUp() {
-        partita = new Partita(io);
-
+        partita = new Partita();
+        io = new IOConsole();
+        comando.setIO(io);
     }
 
     @Test

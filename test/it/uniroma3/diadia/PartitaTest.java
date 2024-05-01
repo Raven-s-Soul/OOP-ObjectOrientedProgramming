@@ -9,17 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PartitaTest {
 
     Partita partita;
-    IO io;
-
-    @BeforeEach
-    void before() {
-        @SuppressWarnings("unused")
-        IO io = new IOConsole();
-    }
 
     @BeforeEach
     void setUp() {
-        partita = new Partita(io);
+        partita = new Partita();
     }
 
     @Test

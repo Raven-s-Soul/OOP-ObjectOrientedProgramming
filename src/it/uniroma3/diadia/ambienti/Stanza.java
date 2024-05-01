@@ -18,10 +18,10 @@ public class Stanza {
 
     private final String nome;
     private final Attrezzo[] attrezzi;
-    private int numeroAttrezzi;
     private final Stanza[] stanzeAdiacenti;
-    private int numeroStanzeAdiacenti;
     private final String[] direzioni;
+    private int numeroAttrezzi;
+    private int numeroStanzeAdiacenti;
 
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
