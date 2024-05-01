@@ -210,6 +210,10 @@ public class Stanza {
 			direzioni[i] = this.direzioni[i];
 		return direzioni;
 	}
+	
+	public Stanza[] getStanzeAdiacenti() {
+		return this.stanzeAdiacenti;
+	}
 
 	public int getMaxAttrezzi() {
 		return NUMERO_MASSIMO_ATTREZZI;
