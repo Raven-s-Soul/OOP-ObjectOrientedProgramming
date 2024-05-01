@@ -10,7 +10,7 @@ import java.util.Scanner;
 * @version 1.0
 */
 public class IOConsole implements  IO{
-	
+
 	/**
 	* Scrive messaggi in output.
 	*
@@ -19,10 +19,10 @@ public class IOConsole implements  IO{
 	public void mostraMessaggio(String msg) {
 		System.out.println(msg);
 	}
-	
+
 	/**
 	* Legge i messaggi in input da parte del giocatore.
-	* 
+	*
 	* @return riga ovvero la stringa letta dalla tastiera.
 	*/
 	public String leggiRiga() {

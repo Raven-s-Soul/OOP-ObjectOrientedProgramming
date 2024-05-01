@@ -10,41 +10,41 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ComandoPosaTest {
-	
-	Partita partita;
-	ComandoPosa comando= new ComandoPosa();
-	IO io= new IOConsole();
-	Attrezzo attrezzo= new Attrezzo("test", 1);
-	
-	@BeforeEach
-	void setUp() {
-		partita= new Partita(io);	
-	
-	}
-	
-	@Test
-	void testPosaDaBorsaVuota() {
-		comando.esegui(partita);
-		assertTrue(partita.getGiocatore().getBorsa().isEmpty());	
-	}
-	
-	@Test
-	void testPosaDaBorsaUnElemento() {
-		partita.getGiocatore().addAttrezzoToBorsa(attrezzo);
-		comando.setParametro(attrezzo.getNome());
-		comando.esegui(partita);
 
-		assertTrue(partita.getGiocatore().getBorsa().isEmpty());
-	}
+    Partita partita;
+    ComandoPosa comando = new ComandoPosa();
+    IO io = new IOConsole();
+    Attrezzo attrezzo = new Attrezzo("test", 1);
 
-	@Test
-	void testPosaDaBorsaConDueElementi() {
-		partita.getGiocatore().addAttrezzoToBorsa(attrezzo);
-		Attrezzo attrezzo2= new Attrezzo("test2", 2);
-		partita.getGiocatore().addAttrezzoToBorsa(attrezzo2);	
-		comando.setParametro(attrezzo.getNome());
-		comando.esegui(partita);
+    @BeforeEach
+    void setUp() {
+        partita = new Partita(io);
 
-		assertEquals(1, partita.getGiocatore().getBorsa().getNumAttrezzi());
-	}
+    }
+
+    @Test
+    void testPosaDaBorsaVuota() {
+        comando.esegui(partita);
+        assertTrue(partita.getGiocatore().getBorsa().isEmpty());
+    }
+
+    @Test
+    void testPosaDaBorsaUnElemento() {
+        partita.getGiocatore().addAttrezzoToBorsa(attrezzo);
+        comando.setParametro(attrezzo.getNome());
+        comando.esegui(partita);
+
+        assertTrue(partita.getGiocatore().getBorsa().isEmpty());
+    }
+
+    @Test
+    void testPosaDaBorsaConDueElementi() {
+        partita.getGiocatore().addAttrezzoToBorsa(attrezzo);
+        Attrezzo attrezzo2 = new Attrezzo("test2", 2);
+        partita.getGiocatore().addAttrezzoToBorsa(attrezzo2);
+        comando.setParametro(attrezzo.getNome());
+        comando.esegui(partita);
+
+        assertEquals(1, partita.getGiocatore().getBorsa().getNumAttrezzi());
+    }
 }

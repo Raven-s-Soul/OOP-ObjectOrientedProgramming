@@ -1,20 +1,20 @@
 package it.uniroma3.diadia;
 
-public class IOSimulator implements IO{
+public class IOSimulator implements IO {
 
     public static final int baseArrayLength = 10;
 
     String[] RigheIn;
-    String[] RigheOut;
+    //String[] RigheOut;
     String[] RigheGen;
-    
-    
+
+
     int indexRigheIn;
     int indexRigheOut;
     int indexGenOut;
 
 
-    public IOSimulator(String[] Input){
+    public IOSimulator(String[] Input) {
         this.RigheIn = Input;
         //this.RigheOut = new String[baseArrayLength];
         this.RigheGen = new String[baseArrayLength];
@@ -22,16 +22,18 @@ public class IOSimulator implements IO{
         this.indexRigheOut = 0;
 
     }
-
-    private void setNewSize(String[] Array,int addSize) {
+    
+    /*
+    private void setNewSize(String[] Array, int addSize) {
         String[] newArray = new String[Array.length + addSize];
         int i = 0;
-        for( String a : Array) {
+        for (String a : Array) {
             newArray[i] = a;
             i++;
         }
         Array = newArray;
     }
+    */
 
     @Override
     public void mostraMessaggio(String msg) {

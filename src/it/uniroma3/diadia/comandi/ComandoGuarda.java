@@ -14,15 +14,15 @@ public class ComandoGuarda implements Comando {
     }
 
     @Override
-    public void esegui(Partita partita) {
-    	partita.getIo().mostraMessaggio("Cfu: " + partita.getGiocatore().getCfu());
-    	partita.getIo().mostraMessaggio(partita.getGiocatore().getBorsa().toString());
-    	partita.getIo().mostraMessaggio(partita.getLabirinto().getStanzaAttuale().getDescrizione());
-    	
+    public void setParametro(String parametro) {
+
     }
 
     @Override
-    public void setParametro(String parametro) {
+    public void esegui(Partita partita) {
+        partita.getIo().mostraMessaggio("Cfu: " + partita.getGiocatore().getCfu());
+        partita.getIo().mostraMessaggio(partita.getGiocatore().getBorsa().toString());
+        partita.getIo().mostraMessaggio(partita.getLabirinto().getStanzaAttuale().getDescrizione());
 
     }
 }

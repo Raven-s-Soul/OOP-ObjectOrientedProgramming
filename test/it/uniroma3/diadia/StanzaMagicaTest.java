@@ -12,30 +12,30 @@ public class StanzaMagicaTest {
     StanzaMagica stanzaMagica;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         stanzaMagica = new StanzaMagica("Test");
     }
 
     @Test
-    void testAddAttrezzoNull(){
+    void testAddAttrezzoNull() {
         assertFalse(stanzaMagica.addAttrezzo(null));
     }
 
     @Test
-    void testAddAttrezzo(){
+    void testAddAttrezzo() {
         Attrezzo attrezzo = new Attrezzo("Attrezzo", 1);
         assertTrue(stanzaMagica.addAttrezzo(attrezzo));
     }
 
     @Test
-    void testAddAttrezzoMagico(){
+    void testAddAttrezzoMagico() {
         int peso = 2;
         Attrezzo attrezzo = new Attrezzo("Attrezzo", peso);
         stanzaMagica.addAttrezzo(attrezzo);
         stanzaMagica.addAttrezzo(attrezzo);
         stanzaMagica.addAttrezzo(attrezzo);
         stanzaMagica.addAttrezzo(attrezzo); // Magico
-        assertEquals(peso*2, stanzaMagica.getAttrezzi()[stanzaMagica.getNumAttrezzi()-1].getPeso());
+        assertEquals(peso * 2, stanzaMagica.getAttrezzi()[stanzaMagica.getNumAttrezzi() - 1].getPeso());
     }
 
 }

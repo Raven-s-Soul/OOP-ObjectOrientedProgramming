@@ -12,19 +12,19 @@ public class ComandoFine implements Comando {
     public String getParametro() {
         return null;
     }
-    
-    /**
-	 * Comando "Fine".
-	 */
-    @Override
-    public void esegui(Partita partita) {
-    	// si desidera smettere
-    	partita.getIo().mostraMessaggio("Grazie di aver giocato!");
-    	partita.setFinita();
-    }
 
     @Override
     public void setParametro(String parametro) {
 
+    }
+
+    /**
+     * Comando "Fine".
+     */
+    @Override
+    public void esegui(Partita partita) {
+        // si desidera smettere
+        partita.getIo().mostraMessaggio("Grazie di aver giocato!");
+        partita.setFinita();
     }
 }

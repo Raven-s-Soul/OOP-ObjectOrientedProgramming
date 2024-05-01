@@ -14,12 +14,12 @@ public class ComandoNonValido implements Comando {
     }
 
     @Override
-    public void esegui(Partita partita) {
-    	partita.getIo().mostraMessaggio("Comando non valido.");
+    public void setParametro(String parametro) {
+
     }
 
     @Override
-    public void setParametro(String parametro) {
-
+    public void esegui(Partita partita) {
+        partita.getIo().mostraMessaggio("Comando non valido.");
     }
 }
