@@ -8,10 +8,17 @@ import org.junit.jupiter.api.Test;
 class PartitaTest {
 
 	Partita partita;
+	IO io;
+	
+	@BeforeEach
+    void before(){
+		@SuppressWarnings("unused")
+		IO io = new IOConsole();
+    }
 	
 	@BeforeEach
     void setUp(){
-		partita= new Partita();
+		partita= new Partita(io);
     }
 
 	@Test

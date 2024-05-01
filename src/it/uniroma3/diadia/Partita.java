@@ -17,17 +17,18 @@ public class Partita {
 
 	private Labirinto Labirinto;
 	private Giocatore giocatore;
-	
+	private IO io;
 	private boolean finita;
 
 	/**
 	* Crea Partita, definisce finita, giocatore e Labirinto.
 	*/
-	public Partita() {
+	public Partita(IO io) {
 		this.Labirinto = new Labirinto();
 		this.getLabirinto().creaStanze();
 		this.finita = false;
 		this.giocatore= new Giocatore();
+		this.io = io;
 	}
 
 	/**
@@ -45,9 +46,13 @@ public class Partita {
 	 * @return vero se partita finita
 	 */
 	public boolean isFinita() {
-		return finita || vinta() || (getGiocatore().getCfu() == 0);
+		return finita || vinta() || isCfuFiniti();
 	}
-
+	
+	public boolean isCfuFiniti() {
+		return getGiocatore().getCfu() == 0;
+	}
+	
 	//Imposta la partita come finita
 	public void setFinita() {
 		this.finita = true;
@@ -59,6 +64,11 @@ public class Partita {
 
 	public Labirinto getLabirinto() {
 		return Labirinto;
+	}
+
+
+	public IO getIo() {
+		return io;
 	}
 	
 

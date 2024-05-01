@@ -1,7 +1,5 @@
 package it.uniroma3.diadia;
 
-import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
@@ -35,8 +33,8 @@ public class DiaDia {
 	 * Crea DiaDia, e definisce partita.
 	 */
 	public DiaDia(IO io) {
-		this.partita = new Partita();
-        this.io = io;
+		this.io = io;
+		this.partita = new Partita(io);
 	}
 
 	/**
@@ -45,13 +43,10 @@ public class DiaDia {
 	 */
 	public void gioca() {
 		String istruzione;
-
 		io.mostraMessaggio(MESSAGGIO_BENVENUTO);
-
 		do
 			istruzione = io.leggiRiga();
 		while (!processaIstruzione(istruzione));
-
 	}
 
 	/**
@@ -66,102 +61,16 @@ public class DiaDia {
 		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica();
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
-		if (this.partita.vinta())
-			System.out.println("Hai vinto!");
-		if (this.partita.isFinita()) // giocatoreIsVivo() capire...
-			System.out.println("Hai esaurito i CFU...");
+		if (this.partita.vinta()) {
+			io.mostraMessaggio("Hai vinto!");
+			this.partita.setFinita();
+		}
+			
+		if (this.partita.isCfuFiniti()) // giocatoreIsVivo() capire...
+			io.mostraMessaggio("Hai esaurito i CFU...");
 
 		return this.partita.isFinita();
 
-	}
-
-	// implementazioni dei comandi dell'utente:
-
-	/**
-	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra e ne stampa il
-	 * nome, altrimenti stampa un messaggio di errore
-	 */
-	private void vai(String direzione) {
-		if (direzione == null) {
-			io.mostraMessaggio("Dove vuoi andare ?");
-		}
-		else {
-			Stanza prossimaStanza = null;
-			prossimaStanza = this.partita.getLabirinto().getStanzaAttuale().getStanzaAdiacente(direzione);
-			if (prossimaStanza == null)
-				io.mostraMessaggio("Direzione inesistente");
-			else {
-				this.partita.getLabirinto().setStanzaAttuale(prossimaStanza);
-				int cfu = this.partita.getGiocatore().getCfu();
-				this.partita.getGiocatore().setCfu(--cfu);
-			}
-		}
-		io.mostraMessaggio(partita.getLabirinto().getStanzaAttuale().getDescrizione());
-	}
-
-	/**
-	 * Comando "Fine".
-	 */
-	private void fine() {
-		io.mostraMessaggio("Grazie di aver giocato!"); // si desidera smettere
-	}
-
-	/**
-	 * Prende un attrezzo dal ambiente e lo inserisce nella borsa del giocatore.
-	 *
-	 * @param nomeAttrezzo è la stringa utile a cercare l'attrezzo
-	 */
-	private void prendi(String nomeAttrezzo) {
-		if(this.partita.getLabirinto().getStanzaAttuale().getNumAttrezzi() ==0) {
-			io.mostraMessaggio("Non sono presenti attrezzi nella stanza");
-			return;
-		}
-
-		if(nomeAttrezzo==null){
-			io.mostraMessaggio("cosa vuoi prendere?");
-		}
-		else {
-			Attrezzo attrezzoPreso= null;
-			attrezzoPreso=this.partita.getLabirinto().getStanzaAttuale().getAttrezzo(nomeAttrezzo);  //prende l'attrezzo dalla stanza
-			if(attrezzoPreso==null)
-				io.mostraMessaggio("oggetto non presente nella stanza");
-
-			else {
-				this.partita.getGiocatore().addAttrezzoToBorsa(attrezzoPreso);	//aggiunge l'attrezzo alla borsa
-				this.partita.getLabirinto().getStanzaAttuale().removeAttrezzo(attrezzoPreso);	//rimuove da stanza
-				io.mostraMessaggio("Oggetto preso");
-			}
-		}
-
-		io.mostraMessaggio(partita.getLabirinto().getStanzaAttuale().getDescrizioneAttrezzi());
-
-	}
-
-	/**
-	 * Posa un attrezzo dalla borsa del giocatore e lo inserisce nel ambiente.
-	 *
-	 * @param nomeAttrezzo è la stringa utile a cercare l'attrezzo
-	 */
-	private void posa (String nomeAttrezzo) {
-		if(this.partita.getGiocatore().getBorsa().getNumAttrezzi()==0) {
-			io.mostraMessaggio("Non sono presenti oggetti nella borsa");
-			return;
-		}
-
-		if(nomeAttrezzo==null) {
-			io.mostraMessaggio("Cosa vuoi posare?");
-		}
-		else {
-			Attrezzo attrezzoDaPosare= null;
-			attrezzoDaPosare= this.partita.getGiocatore().removeAttrezzoDaBorsa(nomeAttrezzo);		//rimuouve attrezzo
-			if(attrezzoDaPosare==null) {
-				io.mostraMessaggio("Attrezzo non presente nella borsa");
-			}
-			else {
-				this.partita.getLabirinto().getStanzaAttuale().addAttrezzo(attrezzoDaPosare);	//aggiunge l'attrezzo alla stanza
-			}
-		}
-		io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
 	}
 
 	public static void main(String[] argc) {

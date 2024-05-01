@@ -9,35 +9,36 @@ public class ComandoVai implements Comando {
 
     @Override
     public String getNome() {
-        return null;
+        return "vai";
     }
 
     @Override
     public String getParametro() {
-        return null;
+        return this.direzione;
     }
-
+    
+    /**
+	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra e ne stampa il
+	 * nome, altrimenti stampa un messaggio di errore
+	 */
     @Override
     public void esegui(Partita partita) {
-
-        Stanza stanzaCorrente = partita.getLabirinto().getStanzaAttuale();
-
         if (direzione==null) {
-            System.out.println("Dove vuoi andare? Devi specificare una direzione");
-            return;
+        	partita.getIo().mostraMessaggio("Dove vuoi andare? Devi specificare una direzione");
         }
-
-        Stanza prossimaStanza = stanzaCorrente.getStanzaAdiacente(this.direzione);
-
-        if (prossimaStanza==null) {
-            System.out.println("Direzione inesistente");
-            return;
+        else {
+        	Stanza stanzaCorrente = partita.getLabirinto().getStanzaAttuale();
+            Stanza prossimaStanza = stanzaCorrente.getStanzaAdiacente(this.direzione);
+            if (prossimaStanza==null) {
+            	partita.getIo().mostraMessaggio("Direzione inesistente");
+            }
+            else {
+            	partita.getLabirinto().setStanzaAttuale(prossimaStanza);
+                //partita.getIo().mostraMessaggio(partita.getLabirinto().getStanzaAttuale().getNome());
+                partita.getGiocatore().setCfu (partita.getGiocatore().getCfu()-1);
+            }
         }
-
-        partita.getLabirinto().setStanzaAttuale(prossimaStanza);
-        System.out.println(partita.getLabirinto().getStanzaAttuale().getNome());
-        partita.getGiocatore().setCfu (partita.getGiocatore().getCfu()-1);
-
+        partita.getIo().mostraMessaggio(partita.getLabirinto().getStanzaAttuale().getDescrizione());
     }
 
     @Override

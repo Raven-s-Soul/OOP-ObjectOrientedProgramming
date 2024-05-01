@@ -5,7 +5,7 @@ import it.uniroma3.diadia.Partita;
 public class ComandoGuarda implements Comando {
     @Override
     public String getNome() {
-        return null;
+        return "Guarda";
     }
 
     @Override
@@ -15,7 +15,10 @@ public class ComandoGuarda implements Comando {
 
     @Override
     public void esegui(Partita partita) {
-
+    	partita.getIo().mostraMessaggio("Cfu: " + partita.getGiocatore().getCfu());
+    	partita.getIo().mostraMessaggio(partita.getGiocatore().getBorsa().toString());
+    	partita.getIo().mostraMessaggio(partita.getLabirinto().getStanzaAttuale().getDescrizione());
+    	
     }
 
     @Override
