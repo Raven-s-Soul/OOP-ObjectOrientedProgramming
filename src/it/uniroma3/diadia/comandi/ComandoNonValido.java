@@ -5,7 +5,7 @@ import it.uniroma3.diadia.Partita;
 public class ComandoNonValido implements Comando {
     @Override
     public String getNome() {
-        return null;
+        return "Non Valido";
     }
 
     @Override
@@ -15,7 +15,7 @@ public class ComandoNonValido implements Comando {
 
     @Override
     public void esegui(Partita partita) {
-
+    	partita.getIo().mostraMessaggio("Comando non valido.");
     }
 
     @Override

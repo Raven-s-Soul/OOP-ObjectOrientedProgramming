@@ -152,7 +152,7 @@ public class Borsa {
 					s.append(attrezzi[i].toString()+" ");
 		}
 		else
-			s.append("Borsa vuota");
+			s.append("Borsa vuota.");
 		return s.toString();
 	}
 
