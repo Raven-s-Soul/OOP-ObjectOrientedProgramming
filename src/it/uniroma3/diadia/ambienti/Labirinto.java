@@ -143,7 +143,7 @@ public class Labirinto {
 	* @param addSize numero di slot da aggiungere in Labirinto
 	*/
 	private void setNewSize(int addSize) {
-		Stanza newLab[] = new Stanza[getStanze().length + addSize];
+		Stanza[] newLab = new Stanza[getStanze().length + addSize];
 		int i = 0;
 		for( Stanza a : this.getStanze()) {
 			newLab[i] = a;
