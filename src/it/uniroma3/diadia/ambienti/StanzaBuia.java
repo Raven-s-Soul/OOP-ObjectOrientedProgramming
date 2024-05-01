@@ -16,16 +16,9 @@ public class StanzaBuia extends Stanza{
 		
 		for(Attrezzo a: this.getAttrezzi()) {
 			if(a!=null && a.getNome().equals(attrezzoVedere))
-				return "qui c'è buio pesto!";
+				return super.getDescrizione();
 		}
 		
-		return super.getDescrizione();
-		
-		
-		
+		return "qui c'è buio pesto!";		
 	}
-	
-	
-	
-	
 }
