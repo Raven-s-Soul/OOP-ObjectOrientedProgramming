@@ -2,6 +2,11 @@ package it.uniroma3.diadia.ambienti;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Classe Stanza - una stanza in un gioco di ruolo. Una stanza e' un luogo
  * fisico nel gioco. E' collegata ad altre stanze attraverso delle uscite. Ogni
@@ -17,9 +22,9 @@ public class Stanza {
     static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 
     private final String nome;
-    private final Attrezzo[] attrezzi;
-    private final Stanza[] stanzeAdiacenti;
-    private final String[] direzioni;
+    private final Set<Attrezzo> attrezzi;
+    private final Map<String, Stanza> stanzeAdiacenti;
+    private final Set<String> direzioni;
     private int numeroAttrezzi;
     private int numeroStanzeAdiacenti;
 
@@ -32,9 +37,9 @@ public class Stanza {
         this.nome = nome;
         this.numeroStanzeAdiacenti = 0;
         this.numeroAttrezzi = 0;
-        this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
-        this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
-        this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+        this.direzioni = new HashSet<>();
+        this.stanzeAdiacenti = new HashMap<String, Stanza>();
+        this.attrezzi = new HashSet<>();
     }
 
     /**

@@ -37,7 +37,7 @@ class BorsaTest {
     void testAddAttrezzoBorsaPiena() {
         borsaPiena = new Borsa();
         for (int i = 0; i < borsa.getPesoMax(); i++) {
-            ATest2 = new Attrezzo("Oggetto Test", 1);
+            ATest2 = new Attrezzo("Oggetto Test "+ i, 1);
             borsaPiena.addAttrezzo(ATest2);
         }
         assertFalse(borsaPiena.addAttrezzo(ATest));
