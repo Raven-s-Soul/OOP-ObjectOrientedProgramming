@@ -13,11 +13,8 @@ public class StanzaBuia extends Stanza {
 
     @Override
     public String getDescrizione() {
-
-        for (Attrezzo a : this.getAttrezzi()) {
-            if (a != null && a.getNome().equals(attrezzoVedere))
-                return super.getDescrizione();
-        }
+        if(this.getAttrezzi().contains(this.getAttrezzo(this.attrezzoVedere)))
+            return super.getDescrizione();
 
         return "qui c'è buio pesto!";
     }

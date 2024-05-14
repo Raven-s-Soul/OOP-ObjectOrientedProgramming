@@ -14,23 +14,15 @@ public class StanzaBloccata extends Stanza {
 
     @Override
     public Stanza getStanzaAdiacente(String direzione) {
-
-
         Stanza stanza = null;
+        if (this.getAttrezzi().contains(this.getAttrezzo(attrezzoSblocca))) {
 
-        for (int i = 0; i < this.getNumAttrezzi(); i++) {
-            if (this.getAttrezzi()[i].getNome().equals(this.attrezzoSblocca)) {
-                for (int j = 0; j < this.getNumStanzeAdiacenti(); j++) {
-                    if (this.getDirezioni()[j].equals(direzione))
-                        stanza = this.getStanzeAdiacenti()[j];
-                }
-            }
+            if (this.getStanzeAdiacenti().containsKey(direzione))
+                return this.getStanzeAdiacenti().get(direzione);
         }
 
-        if (stanza == null)
-            return this;
-        else
-            return stanza;
+        return this;
+
     }
 
 

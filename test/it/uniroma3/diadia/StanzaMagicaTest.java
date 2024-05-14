@@ -35,7 +35,10 @@ public class StanzaMagicaTest {
         stanzaMagica.addAttrezzo(attrezzo);
         stanzaMagica.addAttrezzo(attrezzo);
         stanzaMagica.addAttrezzo(attrezzo); // Magico
-        assertEquals(peso * 2, stanzaMagica.getAttrezzi()[stanzaMagica.getNumAttrezzi() - 1].getPeso());
+        // String Builder
+        StringBuilder stringBuilder = new StringBuilder(attrezzo.getNome());
+        stringBuilder.reverse();
+        assertEquals(peso * 2, stanzaMagica.getAttrezzo(stringBuilder.toString()).getPeso());
     }
 
 }

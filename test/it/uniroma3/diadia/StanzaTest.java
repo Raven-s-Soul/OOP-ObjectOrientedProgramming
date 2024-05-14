@@ -11,16 +11,17 @@ class StanzaTest {
 
     Stanza stanza;
     Stanza test;
-    Stanza stanzaAttrezziNull;
+    Stanza stanzaAttrezziPieno;
     Attrezzo AttrezzoTest;
 
     @BeforeEach
     void setUp() {
         stanza = new Stanza("Test");
         test = new Stanza("Test1");
-        stanzaAttrezziNull = new Stanza("Test3");
-        for (int i = 0; i < stanzaAttrezziNull.getMaxAttrezzi(); i++) {
-            stanzaAttrezziNull.addAttrezzo(null);
+        stanzaAttrezziPieno = new Stanza("Test3");
+        for (int i = 0; i < stanzaAttrezziPieno.getMaxAttrezzi(); i++) {
+            Attrezzo a = new Attrezzo(Integer.toString(i),1);
+            stanzaAttrezziPieno.addAttrezzo(a);
         }
 
         AttrezzoTest = new Attrezzo("test", 1);
@@ -49,7 +50,7 @@ class StanzaTest {
         Stanza test2 = new Stanza("Test2");
         stanza.impostaStanzaAdiacente("nord", test);
         stanza.impostaStanzaAdiacente("nord", test2);
-        assertEquals(test2, stanza.getStanzaAdiacente("nord"));
+        assertNotEquals(test2, stanza.getStanzaAdiacente("nord"));
     }
 
     @Test
@@ -59,17 +60,17 @@ class StanzaTest {
             AttrezzoTest2 = new Attrezzo("OggettoTest", i);
             stanza.addAttrezzo(AttrezzoTest2);
         }
-        assertEquals(stanza.getAttrezzi().length, stanza.getMaxAttrezzi());
+        assertEquals(stanza.getAttrezzi().size(), stanza.getMaxAttrezzi());
     }
 
     @Test
     void testAttrezziPienoNull() {
-        assertEquals(stanzaAttrezziNull.getAttrezzi().length, stanzaAttrezziNull.getMaxAttrezzi());
+        assertEquals(stanzaAttrezziPieno.getAttrezzi().size(), stanzaAttrezziPieno.getMaxAttrezzi());
     }
 
     @Test
     void testAttrezziPieno() {
-        assertFalse(stanzaAttrezziNull.addAttrezzo(null));
+        assertFalse(stanzaAttrezziPieno.addAttrezzo(null));
     }
 
     @Test
@@ -129,14 +130,14 @@ class StanzaTest {
         Stanza arrivo = new Stanza("arrivo");
         stanza.impostaStanzaAdiacente("nord", arrivo);
 
-        assertEquals("nord", stanza.getDirezioni()[0]);
+        assertTrue(stanza.getDirezioni().contains("nord"));
     }
 
     @Test
     void testGetDirezioniRiempimentoArray() {
         Stanza arrivo = new Stanza("arrivo");
         stanza.impostaStanzaAdiacente("nord", arrivo);
-        assertEquals(1, stanza.getDirezioni().length);
+        assertEquals(1, stanza.getDirezioni().size());
     }
 
     @Test
