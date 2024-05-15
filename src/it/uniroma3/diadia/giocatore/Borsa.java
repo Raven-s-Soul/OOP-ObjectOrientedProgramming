@@ -1,6 +1,7 @@
 package it.uniroma3.diadia.giocatore;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.attrezzi.ComparatorePeso;
 
 import java.util.*;
 
@@ -154,4 +155,32 @@ public class Borsa {
         return s.toString();
     }
 
+    public List<Attrezzo> getContenutoOrdinatoPerPeso(){
+        final List<Attrezzo> Lista = new ArrayList<>(this.attrezzi.values().stream().toList());
+        final ComparatorePeso cmpPeso = new ComparatorePeso();
+        Collections.sort(Lista,cmpPeso);
+        return Lista;
+    }
+
+    // Verificare
+    public SortedSet<Attrezzo> getContenutoOrdinatoPerNome(){
+        final SortedSet<Attrezzo> Lista = new TreeSet<Attrezzo>();
+        Lista.addAll(this.attrezzi.values());
+        //Collections.sort(Lista);
+        return Lista;
+    }
+
+    public Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso(){
+        Map<Integer, Set<Attrezzo>> map = new HashMap<>();
+        for(Attrezzo a : this.attrezzi.values()){
+            if(map.containsKey(a.getPeso()))
+                map.get(a.getPeso()).add(a);
+            else{
+                Set<Attrezzo> set = new HashSet<>();
+                set.add(a);
+                map.put(a.getPeso(), set);
+            }
+        }
+        return map;
+    }
 }
