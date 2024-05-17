@@ -1,12 +1,15 @@
 package it.uniroma3.diadia;
 
+import java.util.ArrayList;
+
 public class IOSimulator implements IO {
 
     public static final int baseArrayLength = 10;
 
-    String[] RigheIn;
+    //String[] RigheIn;
+    ArrayList<String> RigheIn;
     //String[] RigheOut;
-    String[] RigheGen;
+    ArrayList<String> RigheGen;
 
 
     int indexRigheIn;
@@ -15,9 +18,9 @@ public class IOSimulator implements IO {
 
 
     public IOSimulator(String[] Input) {
-        this.RigheIn = Input;
-        //this.RigheOut = new String[baseArrayLength];
-        this.RigheGen = new String[baseArrayLength];
+        this.RigheIn = new ArrayList<String>();
+        this.RigheGen = new ArrayList<String>();
+        this.indexGenOut = 0;
         this.indexRigheIn = 0;
         this.indexRigheOut = 0;
 
@@ -37,19 +40,19 @@ public class IOSimulator implements IO {
 
     @Override
     public void mostraMessaggio(String msg) {
-        this.RigheGen[indexGenOut] = msg;
+        this.RigheGen.add(indexGenOut, msg);
         this.indexGenOut++;
     }
 
     @Override
     public String leggiRiga() {
-        String riga = this.RigheIn[indexRigheIn];
+        String riga = this.RigheIn.get(indexRigheIn);
         this.indexRigheIn++;
         return riga;
     }
 
     public String nextMessaggio() {
-        String next = this.RigheGen[this.indexRigheOut];
+        String next = this.RigheGen.get(indexRigheOut);
         this.indexRigheOut++;
         return next;
     }

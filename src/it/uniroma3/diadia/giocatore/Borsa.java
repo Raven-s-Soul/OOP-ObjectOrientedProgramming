@@ -1,6 +1,7 @@
 package it.uniroma3.diadia.giocatore;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.attrezzi.ComparatoreNome;
 import it.uniroma3.diadia.attrezzi.ComparatorePeso;
 
 import java.util.*;
@@ -130,7 +131,7 @@ public class Borsa {
     public Attrezzo removeAttrezzo(String nomeAttrezzo) {
         for(Attrezzo attrezzo : this.attrezzi.values()){
             if(attrezzo != null && attrezzo.getNome().equals(nomeAttrezzo)){
-                this.attrezzi.remove(attrezzo);
+                this.attrezzi.remove((Object)(attrezzo.hashCode()));
                 this.numeroAttrezzi--;
                 return attrezzo;
             }
@@ -156,17 +157,17 @@ public class Borsa {
     }
 
     public List<Attrezzo> getContenutoOrdinatoPerPeso(){
-        final List<Attrezzo> Lista = new ArrayList<>(this.attrezzi.values().stream().toList());
+       // final List<Attrezzo> Lista = new ArrayList<>(this.attrezzi.values().stream().toList());
+        final List<Attrezzo> Lista = new ArrayList<>();
+        Lista.addAll(this.attrezzi.values());    
         final ComparatorePeso cmpPeso = new ComparatorePeso();
         Collections.sort(Lista,cmpPeso);
         return Lista;
     }
 
-    // Verificare
     public SortedSet<Attrezzo> getContenutoOrdinatoPerNome(){
-        final SortedSet<Attrezzo> Lista = new TreeSet<Attrezzo>();
+        final SortedSet<Attrezzo> Lista = new TreeSet<Attrezzo>(new ComparatoreNome());
         Lista.addAll(this.attrezzi.values());
-        //Collections.sort(Lista);
         return Lista;
     }
 
@@ -183,4 +184,10 @@ public class Borsa {
         }
         return map;
     }
+
+    public SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso(){
+        final SortedSet<Attrezzo> Lista = new TreeSet<Attrezzo>(new ComparatorePeso());
+        Lista.addAll(this.attrezzi.values());
+        return Lista;
+    }    
 }
