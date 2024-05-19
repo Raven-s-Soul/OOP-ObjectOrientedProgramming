@@ -42,7 +42,20 @@ public class Labirinto {
         }
         return trovata;
     }
-
+    
+    
+    public Stanza cercaStanzaInLabirinto(String cercare) {
+    	Stanza trovata=null;
+    	for(int i=0; i<this.getStanze().length; i++) {
+    		if(cercare.equals(this.getStanze()[i].getNome())) {
+    			trovata=this.getStanze()[i];
+    			break;
+    		}
+    	}
+    	return trovata;
+    }
+    
+    
     public Stanza getStanzaIniziale() {
         return StanzaIniziale;
     }

@@ -11,7 +11,8 @@ public class StanzaBuia extends Stanza {
 
     @Override
     public String getDescrizione() {
-        if(this.getAttrezzi().contains(this.getAttrezzo(this.attrezzoVedere)))
+    	//nell'if: this.getAttrezzi().contains(this.getAttrezzo(this.attrezzoVedere))
+        if(this.getAttrezzi().containsKey(this.attrezzoVedere))
             return super.getDescrizione();
 
         return "qui c'è buio pesto!";

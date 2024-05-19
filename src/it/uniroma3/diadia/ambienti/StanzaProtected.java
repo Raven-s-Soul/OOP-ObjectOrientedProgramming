@@ -1,5 +1,7 @@
 package it.uniroma3.diadia.ambienti;
 
+import java.util.Map;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
@@ -16,11 +18,15 @@ public class StanzaProtected {
     static final protected int NUMERO_MASSIMO_DIREZIONI = 4;
     static final protected int NUMERO_MASSIMO_ATTREZZI = 10;
     private final String nome;
-    protected Attrezzo[] attrezzi;
     protected int numeroAttrezzi;
-    protected Stanza[] stanzeAdiacenti;
+    protected int numeroAttrezzi;
+    private final Map<String, Attrezzo> attrezzi;
+    private final Map<String, Stanza> stanzeAdiacenti;
+    
+    /*protected Stanza[] stanzeAdiacenti;
     protected int numeroStanzeAdiacenti;
     protected String[] direzioni;
+      protected Attrezzo[] attrezzi;*/
 
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
