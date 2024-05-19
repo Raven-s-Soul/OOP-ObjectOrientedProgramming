@@ -42,7 +42,20 @@ public class Labirinto {
         }
         return trovata;
     }
-
+    
+    
+    public Stanza cercaStanzaInLabirinto(String cercare) {
+    	Stanza trovata=null;
+    	for(int i=0; i<this.getStanze().length; i++) {
+    		if(cercare.equals(this.getStanze()[i].getNome())) {
+    			trovata=this.getStanze()[i];
+    			break;
+    		}
+    	}
+    	return trovata;
+    }
+    
+    
     public Stanza getStanzaIniziale() {
         return StanzaIniziale;
     }
@@ -56,7 +69,7 @@ public class Labirinto {
     public void setStanzaIniziale(Stanza stanzaIniziale) {
         if (!StanzaInLabirinto(stanzaIniziale))
             addStanza(stanzaIniziale);
-        StanzaIniziale = stanzaIniziale;
+        this.StanzaIniziale = stanzaIniziale;
     }
 
     /**
@@ -65,7 +78,7 @@ public class Labirinto {
      * @param stanzaIniziale la stanza designata.
      */
     public void unsafeSetStanzaIniziale(Stanza stanzaIniziale) {
-        StanzaIniziale = stanzaIniziale;
+        this.StanzaIniziale = stanzaIniziale;
     }
 
     public Stanza getStanzaFinale() {
@@ -90,7 +103,7 @@ public class Labirinto {
      * @param stanzaFinale la stanza designata.
      */
     public void unsafeSetStanzaFinale(Stanza stanzaFinale) {
-        StanzaFinale = stanzaFinale;
+        this.StanzaFinale = stanzaFinale;
     }
 
     public Stanza getStanzaAttuale() {
@@ -110,7 +123,7 @@ public class Labirinto {
         if (!StanzaInLabirinto(stanzaAttuale))
             addStanza(stanzaAttuale);
 
-        StanzaAttuale = stanzaAttuale;
+        this.StanzaAttuale = stanzaAttuale;
     }
 
     /**
@@ -119,7 +132,7 @@ public class Labirinto {
      * @param stanzaAttuale la stanza designata.
      */
     public void unsafeSetStanzaAttuale(Stanza stanzaAttuale) {
-        StanzaAttuale = stanzaAttuale;
+        this.StanzaAttuale = stanzaAttuale;
     }
 
     public Stanza[] getStanze() {

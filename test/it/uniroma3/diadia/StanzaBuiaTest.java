@@ -30,7 +30,6 @@ class StanzaBuiaTest {
     @Test
     void testAttrezzoPresente() {
         stanza.addAttrezzo(attrezzo);
-
         assertNotEquals("qui c'è buio pesto!", stanza.getDescrizione());
     }
 

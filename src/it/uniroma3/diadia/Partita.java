@@ -15,15 +15,21 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 public class Partita {
 
 
-    private final Labirinto Labirinto;
+    private Labirinto labirinto;
     private final Giocatore giocatore;
     private boolean finita;
+
+    public Partita(Labirinto labirinto){
+        this.labirinto = labirinto;
+        this.finita = false;
+        this.giocatore = new Giocatore();
+    }
 
     /**
      * Crea Partita, definisce finita, giocatore e Labirinto.
      */
     public Partita() {
-        this.Labirinto = new Labirinto();
+        this.labirinto = new Labirinto();
         this.getLabirinto().creaStanze();
         this.finita = false;
         this.giocatore = new Giocatore();
@@ -61,7 +67,11 @@ public class Partita {
     }
 
     public Labirinto getLabirinto() {
-        return Labirinto;
+        return labirinto;
+    }
+
+    public void setLabirinto(Labirinto labirinto) {
+        this.labirinto = labirinto;
     }
 
 }

@@ -7,7 +7,7 @@ package it.uniroma3.diadia.attrezzi;
  * @author docente di POO
  * @version 1.0
  */
-public class Attrezzo {
+public class Attrezzo implements Comparable<Attrezzo>{
 
     private final String nome;
     private final int peso;
@@ -50,4 +50,20 @@ public class Attrezzo {
         return this.getNome() + " (" + this.getPeso() + "kg)";
     }
 
+    @Override
+    public int hashCode(){
+        return this.getClass().hashCode()+this.getNome().hashCode()+this.getPeso();
+    }
+
+    @Override
+    public boolean equals(Object E){
+        if(E==null || E.getClass() != this.getClass()) return false;
+        Attrezzo F = (Attrezzo) E;
+        return this.getNome().equals(F.getNome()) && this.getPeso() == F.getPeso();
+    }
+
+    @Override
+    public int compareTo(Attrezzo o) {
+        return this.getNome().compareTo(o.getNome());
+    }
 }

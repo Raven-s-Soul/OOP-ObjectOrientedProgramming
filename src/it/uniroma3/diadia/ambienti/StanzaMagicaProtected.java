@@ -50,14 +50,18 @@ public class StanzaMagicaProtected extends StanzaProtected {
     public boolean addAttrezzo(Attrezzo attrezzo) {
         if (attrezzo == null) return false;
         contatoreAttrezziPosati++;
-        if (this.contatoreAttrezziPosati > this.sogliaMagica) {
+       /* if (this.contatoreAttrezziPosati > this.sogliaMagica) {
             attrezzo = this.modificaAttrezzo(attrezzo);
         }
         if (this.numeroAttrezzi < this.attrezzi.length) {
             this.attrezzi[this.numeroAttrezzi] = attrezzo;
             this.numeroAttrezzi++;
             return true;
-        } else return false;
+        } else return false;*/
+        if (this.contatoreAttrezziPosati > this.sogliaMagica) {
+            attrezzo = this.modificaAttrezzo(attrezzo);
+        }
+        return super.addAttrezzo(attrezzo);
     }
 
     private Attrezzo modificaAttrezzo(Attrezzo attrezzo) {
