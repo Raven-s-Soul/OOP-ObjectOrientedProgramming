@@ -1,14 +1,13 @@
 package it.uniroma3.diadia;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class IOSimulator implements IO {
 
-    public static final int baseArrayLength = 10;
+    // public static final int baseArrayLength = 10;
 
-    //String[] RigheIn;
     ArrayList<String> RigheIn;
-    //String[] RigheOut;
     ArrayList<String> RigheGen;
 
 
@@ -19,24 +18,12 @@ public class IOSimulator implements IO {
 
     public IOSimulator(String[] Input) {
         this.RigheIn = new ArrayList<String>();
+        this.RigheIn.addAll(List.of(Input));
         this.RigheGen = new ArrayList<String>();
         this.indexGenOut = 0;
         this.indexRigheIn = 0;
         this.indexRigheOut = 0;
-
     }
-    
-    /*
-    private void setNewSize(String[] Array, int addSize) {
-        String[] newArray = new String[Array.length + addSize];
-        int i = 0;
-        for (String a : Array) {
-            newArray[i] = a;
-            i++;
-        }
-        Array = newArray;
-    }
-    */
 
     @Override
     public void mostraMessaggio(String msg) {

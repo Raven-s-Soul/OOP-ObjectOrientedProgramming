@@ -33,6 +33,10 @@ public class DiaDia {
     /**
      * Crea DiaDia, e definisce partita.
      */
+    public DiaDia(IO io) {
+        this(new Labirinto(), io);
+    }
+    
     public DiaDia(Labirinto labirinto, IO io) {
         this.io = io;
         this.partita = new Partita(labirinto);
