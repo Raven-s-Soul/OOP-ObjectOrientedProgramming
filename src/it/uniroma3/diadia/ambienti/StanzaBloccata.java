@@ -22,7 +22,7 @@ public class StanzaBloccata extends Stanza {
     	
     	if(this.getAttrezzi().containsKey(this.attrezzoSblocca)) {
     		if(this.getStanzeAdiacenti().containsKey(direzione))
-    			return this.getStanzaAdiacente(direzione);		//da vedere! Override...
+    			return super.getStanzaAdiacente(direzione);		//da vedere! Override...
     	}
 
         return this;

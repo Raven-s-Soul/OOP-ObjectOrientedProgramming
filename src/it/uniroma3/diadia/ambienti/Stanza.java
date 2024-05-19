@@ -3,7 +3,6 @@ package it.uniroma3.diadia.ambienti;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -107,6 +106,8 @@ public class Stanza {
      * @return true se riesce ad aggiungere l'attrezzo, false atrimenti.
      */
     public boolean addAttrezzo(Attrezzo attrezzo) {
+        if(attrezzo == null) return false;
+
         if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
         	/*
             this.attrezzi.add(attrezzo);
@@ -199,7 +200,7 @@ public class Stanza {
             return true;
         }
         return false;*/
-    	
+    	if(attrezzo == null) return false;
     	Attrezzo a= this.attrezzi.remove(attrezzo.getNome());
     	
     	if(a!=null) {

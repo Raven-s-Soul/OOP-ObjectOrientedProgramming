@@ -57,7 +57,7 @@ class StanzaTest {
     void testArrayAttrezzi() {
         Attrezzo AttrezzoTest2;
         for (int i = 0; i < stanza.getMaxAttrezzi(); i++) {
-            AttrezzoTest2 = new Attrezzo("OggettoTest", i);
+            AttrezzoTest2 = new Attrezzo("OggettoTest "+i, i);
             stanza.addAttrezzo(AttrezzoTest2);
         }
         assertEquals(stanza.getAttrezzi().size(), stanza.getMaxAttrezzi());
