@@ -73,6 +73,7 @@ public class LabirintoBuilder {
 		if(corrente==null) {
 			corrente= new Stanza(stanza);
 			this.labirinto.addStanza(corrente);
+			this.ultimaAggiunta= corrente;
 		}
 		
 		if(adiacente==null) {
@@ -81,7 +82,6 @@ public class LabirintoBuilder {
 		}
 		
 		corrente.impostaStanzaAdiacente(direzione, adiacente);
-		this.ultimaAggiunta=adiacente;
 		return this;
 	}
 	
@@ -96,6 +96,18 @@ public class LabirintoBuilder {
 				a= new Attrezzo(attrezzo, peso);
 			
 			ultimaAggiunta.addAttrezzo(a);
+		}
+		
+		return this;
+	}
+	
+	public LabirintoBuilder addStanza(String stanza) {
+		Stanza s= this.labirinto.cercaStanzaInLabirinto(stanza);
+		
+		if(s==null) {
+			s= new Stanza(stanza);
+			this.labirinto.addStanza(s);
+			this.ultimaAggiunta= s;
 		}
 		
 		return this;
